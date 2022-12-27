@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>props 속성</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+      <!-- <component v-bind:props속성명="상위 컴포넌트의 data 속성"></component> -->
+      <child-component v-bind:childprops="message"></child-component>
+    </div>
+
+    <script>
+      // 하위 컴포넌트
+      Vue.component('child-component', {
+        // props: ['props 속성명']
+        props: ['childprops'],
+        template: '<p>{{ childprops }}</p>'
+      });
+
+      // 뷰 인스턴스(상위 컴포넌트)
+      new Vue({
+        el: '#app',
+        data: {
+          message: '상위에서 하위 컴포넌트로 데이터 전달 - prop 속성'
+        }
+      });
+    </script>
+  </body>
+</html>

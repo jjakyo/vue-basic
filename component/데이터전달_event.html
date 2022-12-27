@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>event</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+      <p>{{ message }}</p>
+      <!-- 이벤트 수신 -->
+      <!-- <component v-on:이벤트명="상위 컴포넌트 메서드명"></component> -->
+      <child-component v-on:evt="msgChange"></child-component>
+    </div>
+
+    <script>
+      Vue.component('child-component', {
+        template: '<button v-on:click="evtTrigger">click</button>',
+        methods: {
+          evtTrigger: function() {
+            // 이벤트 발생
+            // this.$emit('이벤트명'): 이벤트 발생
+            this.$emit('evt');
+          }
+        }
+      });
+
+      new Vue({
+        el: '#app',
+        data: {
+          message: '하위에서 상위 컴포넌트로 데이터 전달 - 이벤트'
+        },
+        methods: {
+          msgChange: function() {
+            this.message = '이벤트 발생!!';
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
