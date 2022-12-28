@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>computed 속성</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+
+    <div id="app">
+      <h3>computed 속성</h3>
+      <p>{{ computedData }}</p>
+      <hr>
+      <h3>methods 속성</h3>
+      <p>{{ methodsData }}</p>
+      <button v-on:click="msgChange">click</button>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          message: '나는 푸팟뽕커리 사원',
+          methodsData: '나는 똠양꿍 사원'
+        },
+        // methods: 호출할 때만 로직 수행
+        methods: {
+          msgChange: function() {
+            this.methodsData = '내 매력에 빠지면 헤어나올 수 없엉!'
+          }
+        },
+        // 데이터 값이 변경되면 자동으로 로직 수행
+        computed: {
+          computedData: function() {
+            return this.message = '바꼈당!'
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

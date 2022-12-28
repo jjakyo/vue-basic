@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vue Router</title>
+  </head>
+  <body>
+    <!-- 뷰 라이브러리-->
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <!-- 라우터 CDN -->
+    <script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
+
+    <div id="app">
+      <h3>vue router</h3>
+      <hr>
+      <!-- 페이지 이동 태그 -->
+      <router-link to="/first">1번 페이지로 이동</router-link>
+      <router-link to="/second">2번 페이지로 이동</router-link>
+      <!-- 페이지 표시 -->
+      <router-view></router-view>
+    </div>
+    <script>
+      // 컴포넌트 정의
+      var First = {
+        template: '<div>First</div>'
+      };
+      var Second = {
+        template: '<div>Second</div>'
+      };
+
+      // url에 따라 표시할 컴포넌트 지정
+      var routes = [
+        { path: '/first', component: First },
+        { path: '/second', component: Second }
+      ];
+
+      // 뷰 라우터
+      var router = new VueRouter({
+        routes
+      });
+
+      var app = new Vue({
+        router
+      }).$mount('#app');    // .$mount(): 인스턴스를 화면에 붙이는 역할
+
+    </script>
+  </body>
+</html>

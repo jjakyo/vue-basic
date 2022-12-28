@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Data Binding</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+
+    <!-- v-once 속성: 뷰 데이터가 변경되어도 값을 유지 -->
+    <div id="app" v-once>
+      <!-- {{ }}: 뷰 인스턴스의 데이터를 HTML 태그에 연결 -->
+      <h2>{{}} - Mustache</h2>
+      {{ message }}
+      <hr>
+      <!-- v-bind: HTML 속성값에 뷰 데이터 값을 연결 -->
+      <h2>v-bind</h2>
+      <p v-bind:id="imId">아이디 바인딩</p>
+      <p v-bind:class="imClass">클래스 바인딩</p>
+      <img v-bind:src="imImage"></img>
+      <p><a v-bind:href="imLink">링크 바인딩</a></p>
+      <p v-bind:style="imStyle">스타일 바인딩</p>
+
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue!',
+          imId: 'idBinding',
+          imClass: 'classBinding',
+          imImage: 'image.jpg',
+          imLink: 'https://github.com/jjakyo/vue-basic',
+          imStyle: 'color: red'
+        }
+      });
+    </script>
+  </body>
+</html>
